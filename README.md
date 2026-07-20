@@ -1,59 +1,188 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# AutoStock — Sistem Manajemen Inventaris Showroom Mobil
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+AutoStock adalah aplikasi web manajemen inventaris untuk showroom mobil, dibangun menggunakan Laravel 11. Aplikasi ini memungkinkan pengelolaan data unit mobil, tipe mobil, dealer/distributor, serta pencatatan transaksi stok masuk dan keluar secara real-time, dilengkapi dashboard statistik, export laporan PDF, dan REST API.
 
-## About Laravel
+Dibuat sebagai tugas Ujian Akhir Semester (UAS) mata kuliah Pemrograman Web Lanjut.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Identitas
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- **Nama**: Denis Febriansyah
+- **NIM**: 230170156
+- **Program Studi**: Teknik Informatika, Universitas Malikussaleh
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Fitur Utama
 
-## Learning Laravel
+- **Autentikasi & Verifikasi Email** — Login dan registrasi menggunakan Laravel Breeze, dengan verifikasi email aktif.
+- **Role-Based Access Control** — Dua jenis pengguna dengan hak akses berbeda:
+  - **Admin**: akses penuh (kelola Tipe Mobil, Dealer, Unit Mobil, edit/hapus transaksi).
+  - **Staff**: dapat melihat data dan mencatat transaksi stok masuk/keluar, namun tidak dapat mengubah/menghapus data master.
+- **CRUD Lengkap** — Pengelolaan data Tipe Mobil, Dealer/Distributor, dan Unit Mobil.
+- **Manajemen Stok** — Pencatatan transaksi mobil masuk (dari dealer) dan keluar (terjual), dengan penyesuaian stok otomatis.
+- **Dashboard** — Statistik ringkas (total unit, tipe mobil, dealer, nilai inventaris) dan grafik transaksi 7 hari terakhir menggunakan Chart.js.
+- **Export Laporan PDF** — Unduh laporan daftar unit mobil dalam format PDF.
+- **REST API** — Endpoint API (dengan autentikasi token Laravel Sanctum) untuk integrasi eksternal, teruji melalui Postman.
+- **Responsive Design** — Tampilan menyesuaikan baik di desktop maupun perangkat mobile.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+## Teknologi yang Digunakan
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- **Framework**: Laravel 11
+- **Autentikasi**: Laravel Breeze
+- **Role & Permission**: Spatie Laravel Permission
+- **Export PDF**: barryvdh/laravel-dompdf
+- **REST API**: Laravel Sanctum
+- **Frontend**: Blade, Tailwind CSS
+- **Grafik**: Chart.js
+- **Database**: MySQL (XAMPP)
 
-## Laravel Sponsors
+## Cara Instalasi dan Menjalankan Aplikasi
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### Prasyarat
+- PHP >= 8.2
+- Composer
+- Node.js & NPM
+- XAMPP (MySQL & Apache)
 
-### Premium Partners
+### Langkah Instalasi
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+1. **Clone repository**
+   ```bash
+   git clone https://github.com/missjok/autostock-showroom.git
+   cd autostock-showroom
+   ```
 
-## Contributing
+2. **Install dependency PHP**
+   ```bash
+   composer install
+   ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+3. **Install dependency JavaScript**
+   ```bash
+   npm install
+   ```
 
-## Code of Conduct
+4. **Salin file environment**
+   ```bash
+   cp .env.example .env
+   ```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+5. **Generate application key**
+   ```bash
+   php artisan key:generate
+   ```
 
-## Security Vulnerabilities
+6. **Buat database**
+   
+   Buat database baru bernama `db_inventaris` melalui phpMyAdmin (atau nama lain sesuai keinginan).
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+7. **Konfigurasi database di file `.env`**
+   ```env
+   DB_CONNECTION=mysql
+   DB_HOST=127.0.0.1
+   DB_PORT=3306
+   DB_DATABASE=db_inventaris
+   DB_USERNAME=root
+   DB_PASSWORD=
+   ```
 
-## License
+8. **Jalankan migrasi dan seeder**
+   ```bash
+   php artisan migrate --seed
+   ```
+   
+   Perintah ini akan membuat seluruh tabel database sekaligus akun demo (lihat bagian [Akun Demo](#akun-demo)).
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+9. **Build asset frontend**
+   ```bash
+   npm run build
+   ```
+
+10. **Jalankan server**
+    ```bash
+    php artisan serve
+    ```
+
+11. Buka browser dan akses `http://127.0.0.1:8000`
+
+## Akun Demo
+
+| Role  | Email                  | Password      |
+|-------|-------------------------|----------------|
+| Admin | admin@mobil.com         | mobilbaru18   |
+| Staff | customer@mobil.com      | belimobil18   |
+
+## Dokumentasi REST API
+
+Base URL: `http://127.0.0.1:8000/api`
+
+| Method | Endpoint         | Keterangan                          | Autentikasi |
+|--------|-------------------|--------------------------------------|-------------|
+| POST   | `/login`          | Login dan mendapatkan token akses    | Tidak       |
+| POST   | `/logout`         | Logout (menghapus token aktif)       | Ya          |
+| GET    | `/products`       | Menampilkan daftar unit mobil        | Ya          |
+| POST   | `/products`       | Menambahkan unit mobil baru          | Ya          |
+| GET    | `/products/{id}`  | Menampilkan detail unit mobil        | Ya          |
+| PUT    | `/products/{id}`  | Memperbarui data unit mobil          | Ya          |
+| DELETE | `/products/{id}`  | Menghapus unit mobil                 | Ya          |
+
+Autentikasi menggunakan Bearer Token (Laravel Sanctum). Token diperoleh dari endpoint `/login`, kemudian disertakan pada header `Authorization: Bearer {token}` untuk mengakses endpoint yang memerlukan autentikasi.
+
+## Dokumentasi Screenshot
+
+> Screenshot berikut membuktikan seluruh fitur telah berjalan dengan baik.
+
+### 1. Halaman Login & Autentikasi
+![Halaman Login](docs/screenshots/Login.png)
+
+### 2. Verifikasi Email
+![Verif Admin](docs/screenshot/Verif_admin.png)
+![Verif Staff](docs/screenshot/Verif_staff.png)
+
+### 3. Dashboard
+![Dashboard Admin](docs/screenshot/Dashboard_Admin.png)
+![Dashboard Admin](docs/screenshot/Dashboard_staff.png)
+
+### 4. CRUD (Tipe Mobil, Dealer, Unit Mobil)
+![CRUD](docs/screenshot/Tipe_Mobil.png)
+![CRUD](docs/screenshot/Unit_Mobil.png)
+![CRUD](docs/screenshot/Dealer.png)
+![CRUD](docs/screenshot/Riwayat_Transaksi.png)
+
+### 5. REST API — Pengujian di Postman
+![REST API](docs/screenshot/Login_API.png)
+![REST API](docs/screenshot/GET_Products.png)
+![REST API](docs/screenshot/GET_TanpaToken.png)
+![REST API](docs/screenshot/POST_Products.png)
+
+### 6. Pemisahan Hak Akses Admin & Staff
+![CRUD](docs/screenshot/Tipe_Mobil.png)
+![CRUD](docs/screenshot/Unit_Mobil.png)
+![CRUD](docs/screenshot/Dealer.png)
+![CRUD](docs/screenshot/Riwayat_Transaksi.png)
+![STAFF](docs/screenshot/TIPEMOBIL_STAFF.png)
+![STAFF](docs/screenshot/DELAER_STAFF.png)\
+![STAFF](docs/screenshot/UNITMOBIL_STAFF.png)
+![STAFF](docs/screenshot/RIWAYAT_STAFF.png)
+
+
+### 7. Tampilan Responsive (Desktop & Mobile)
+![Dashboard Admin](docs/screenshot/Dashboard_Admin.png)
+![Dashboard Staff](docs/screenshot/mobile.jpeg)
+
+### 8. Hasil Export PDF
+![PDF](docs/screenshot/Export_PDF.png)
+
+## Struktur Role & Hak Akses
+
+| Fitur                     | Admin | Staff |
+|----------------------------|:-----:|:-----:|
+| Lihat data (Tipe Mobil, Dealer, Unit Mobil) | ✅ | ✅ |
+| Tambah/Edit/Hapus data master | ✅ | ❌ |
+| Lihat riwayat transaksi | ✅ | ✅ |
+| Tambah transaksi (stok masuk/keluar) | ✅ | ✅ |
+| Edit/Hapus transaksi | ✅ | ❌ |
+| Export laporan PDF | ✅ | ✅ |
+| Akses dashboard | ✅ | ✅ (data terbatas) |
+
+## Lisensi
+
+Project ini dibuat untuk keperluan akademik (Ujian Akhir Semester) dan tidak dimaksudkan untuk penggunaan komersial.
