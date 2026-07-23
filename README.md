@@ -110,6 +110,7 @@ Dibuat sebagai tugas Ujian Akhir Semester (UAS) mata kuliah Pemrograman Web Lanj
 | Admin | admin@mobil.com         | mobilbaru18   |
 | Staff | customer@mobil.com      | belimobil18   |
 
+
 ## Dokumentasi REST API
 
 Base URL: `http://127.0.0.1:8000/api`
@@ -159,7 +160,7 @@ Autentikasi menggunakan Bearer Token (Laravel Sanctum). Token diperoleh dari end
 ![CRUD](docs/screenshot/Dealer.png)
 ![CRUD](docs/screenshot/Riwayat_Transaksi.png)
 ![STAFF](docs/screenshot/TIPEMOBIL_STAFF.png)
-![STAFF](docs/screenshot/DELAER_STAFF.png)\
+![STAFF](docs/screenshot/DEALER_STAFF.png)
 ![STAFF](docs/screenshot/UNITMOBIL_STAFF.png)
 ![STAFF](docs/screenshot/RIWAYAT_STAFF.png)
 
