@@ -158,7 +158,7 @@ Autentikasi menggunakan Bearer Token (Laravel Sanctum). Token diperoleh dari end
 ![CRUD](docs/screenshot/Tipe_Mobil.png)
 ![CRUD](docs/screenshot/Unit_Mobil.png)
 ![CRUD](docs/screenshot/Dealer.png)
-![CRUD](docs/screenshot/Riwayat_Transaksi.png)
+![CRUD](docs/screenshot/Riwayat_Tranksaksi.png)
 ![STAFF](docs/screenshot/TIPEMOBIL_STAFF.png)
 ![STAFF](docs/screenshot/DEALER_STAFF.png)
 ![STAFF](docs/screenshot/UNITMOBIL_STAFF.png)
