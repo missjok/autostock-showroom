@@ -131,7 +131,7 @@ Autentikasi menggunakan Bearer Token (Laravel Sanctum). Token diperoleh dari end
 > Screenshot berikut membuktikan seluruh fitur telah berjalan dengan baik.
 
 ### 1. Halaman Login & Autentikasi
-![Halaman Login](docs/screenshots/Login.png)
+![Login](docs/screenshot/Login_awal.png)
 
 ### 2. Verifikasi Email
 ![Verif Admin](docs/screenshot/Verif_admin.png)
